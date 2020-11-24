@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>Component library</title>
 </head>
 <body>
@@ -20,28 +21,34 @@
         <p>This a paragraph it is regular text size and is use to write descriptions. This is free flowing and will wrap at the end like a paragraph</p>
 
         <small>This is relatively smaller text</small>
+        <p>
+            This paragraph has a <strong>bold</strong> text
+        </p>
+
+        <hr>
 
         <h2>@containers</h2>
 
         <h3>fluid container</h3>
-        <div>This is a fluid container and it go till the end of the page</div>
+        <div class="container">This is a fluid container and it go till the end of the page</div>
 
         <h3>centered container</h3>
-        <div>This is a centered container and it will go till the specified width</div>
+        <div class="container-center">This is a centered container and it will go till the specified width</div>
 
         <hr>
 
         <h2>@links</h2>
 
-        <a href="/">Primary Link</a>
-        <a href="/">Secondary Link</a>
+        <a class="link link-primary" href="/">Primary Link</a>
+        <a class="link link-secondary" href="/">Secondary Link</a>
 
         <hr>
 
        <h2>@lists</h2>
 
        <h3>Unordered List</h3>
-       <ul>
+       <p>this list has no bullets</p>
+       <ul class="non-bullet">
             <li>Item one</li>
             <li>Item Two</li>
             <li>Item three</li>
@@ -49,14 +56,14 @@
 
        <h3>Unordered Inline List</h3>
 
-       <ul>
-           <li>Inline item one</li>
-           <li>Inline item two</li>
-           <li>Inline Item three</li>
+       <ul class="non-bullet ">
+           <li class="list-inline">Inline item one</li>
+           <li class="list-inline">Inline item two</li>
+           <li class="list-inline">Inline Item three</li>
        </ul>
 
        <h3>Revered Ordered List</h3>
-       <ol>
+       <ol reversed>
            <li>Milk</li>
            <li>Eggs</li>
            <li>bread</li>
@@ -66,17 +73,17 @@
 
        <h2>@nav</h2>
 
-       <nav>
-           <div>Brand Name</div>
-           <ul>
-               <li>
-                   <a href="/">HOME</a>
+       <nav class="navigation container">
+           <div class="nav-brand">Brand Name</div>
+           <ul class="non-bullet nav-pills">
+               <li class="list-inline">
+                   <a class="link active" href="/">home</a>
                </li>
-               <li>
-                   <a href="/">PROJECTS</a>
+               <li class="list-inline">
+                   <a class="link" href="/">projects</a>
                </li>
-               <li>
-                   <a href="/">BLOGS</a>
+               <li class="list-inline">
+                   <a class="link" href="/">blogs</a>
                </li>
            </ul>
        </nav>
@@ -84,33 +91,46 @@
 
        <h2>@header</h2>
 
-       <header>
-           <img src="images\hero-img.svg" alt="">
-           <h1>Heading inside hero</h1>
+       <header class="hero">
+           <img class="hero-img" src="images\hero-img.svg" alt="">
+           <h1 class="hero-heading">Heading inside <span style="color: var(--primary-color);"> hero</span></h1>
        </header>
 
        <hr>
 
        <h2>@section</h2>
-       <section>
-            <h3>white section</h3>
-             <p>This will have white section</p>
+       <section class="
+       section">
+        <div class="container-center">
+            <h1>white section</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
        </section>
-       <section>
-           <h3>Off white section</h3>
-           <p>This will have Grey section</p>
+       <section class="
+       section ow">
+        <div class="container-center ">
+            <h1>Off white section</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
        </section>
        
        <hr>
        
        <h2>@footer</h2>
 
-       <footer>
-           <div> Some small heading inside footer</div>
-           <ul>
-               <li>Social 1</li>
-               <li>Social 2</li>
-               <li>Social 3</li>
+       <footer class="footer">
+           <div class="footer-heading"> Some small heading inside footer</div>
+           <ul class="non-bullet">
+               <li class="list-inline">
+                   <a class="link" href="/">Social 1</a>
+               </li>
+               <li class="list-inline">
+                    <a class="link" href="/">Social 2</a>
+               </li>
+               <li class="list-inline">
+                  <a class="link" href="/">Social 3</a>
+               </li>
+              
            </ul>
        </footer>
 
