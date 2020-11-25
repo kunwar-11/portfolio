@@ -3,11 +3,15 @@
 :root {
     --primary-color: #00B0FF;
     --gray: #6B7280;
-    --off-white: #F3F4F6;
+    --off-blue: #EEF2FF;
 }
 body{
     font-family: 'Montserrat', sans-serif;
     margin: 0px;
+}
+
+.space {
+    padding-bottom: 1rem;
 }
 
 hr {
@@ -82,16 +86,21 @@ hr {
     font-weight: bold;
 }
 
+.margin-md {
+    margin-top: 2rem !important;
+}
 
 
 /* hero/header section */
 
 .hero {
     padding: 2rem;
+    margin-top: 1rem;
 }
 
 .hero .hero-img {
-    max-width: 400px;
+    width: 350px;
+    max-width: 100%;
     margin: auto;
     display: block;
 }
@@ -105,7 +114,7 @@ hr {
 /* sections */
 
 .section {
-    padding: 1.5rem;
+    padding: 2rem 2rem;
 }
 
 .section h1{
@@ -113,7 +122,7 @@ hr {
 }
 
 .ow {
-    background-color: var(--off-white);
+    background-color: var(--off-blue);
 }
 
 /* footer */
@@ -125,10 +134,14 @@ hr {
     color: white;
     border-top-right-radius: 1rem;
 }
-
+.footer .footer-heading {
+    font-size: large;
+    font-weight: bold;
+}
 .footer .link {
     color: white;
 }
 .footer .non-bullet {
     padding-inline-start: 0px;
 }
+
