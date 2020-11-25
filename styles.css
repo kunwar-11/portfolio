@@ -76,6 +76,7 @@ hr {
 
 .nav-brand {
     font-weight: bold;
+    font-size: large;
 }
 
 .nav-pills {
@@ -98,7 +99,7 @@ hr {
     margin-top: 1rem;
 }
 
-.hero .hero-img {
+.hero-img {
     width: 350px;
     max-width: 100%;
     margin: auto;
@@ -143,5 +144,22 @@ hr {
 }
 .footer .non-bullet {
     padding-inline-start: 0px;
+}
+
+@media only screen and (max-width: 383px ) {
+    .nav-pills {
+        padding-left: 24px;
+    }
+    .footer .link {
+        padding: 0.2rem;
+    }
+}
+@media only screen and (max-width: 361px ) {
+    .nav-pills {
+        padding-left: 17px;
+    }
+    .footer .link {
+        padding: 0.1rem;
+    }
 }
 
