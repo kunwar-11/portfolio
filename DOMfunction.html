@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link
+      rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/themes/prism.min.css"
+    />
+    <title>DOM Function |blog |Rishabh Kunwar</title>
+</head>
+<body>
+    <nav class="navigation container">
+        <div class="nav-brand">Rishabh Kunwar</div>
+        <ul class="non-bullet nav-pills">
+            <li class="list-inline">
+                <a class="link " href="index.html">home</a>
+            </li>
+            <li class="list-inline">
+                <a class="link" href="projects.html">projects</a>
+            </li>
+            <li class="list-inline">
+                <a class="link active" href="blogs.html">blogs</a>
+            </li>
+        </ul>
+    </nav>
+    <header class="hero">
+        <h1 class="hero-heading">Document <span style="color: var(--primary-color);">Object </span>Model (DOM) <span style="color: var(--primary-color);">Functions</span></h1>
+    </header>
+    <div class="container container-center">
+        <p>
+            <span style="font-size:x-large; font-weight: bold;">I</span>n this blog I am goning to talk about the Document Object Model (DOM) functions, but the first question which arises is <strong>What is DOM ?</strong>
+        </p>
+        <p>
+            When a Web Page is opened in browser, browser retrieves the page HTML text and parses it.
+            The browser build a model of the Document's structure and uses the model to create(draw) the page on the screen. 
+            Document is like a live data structure which user can read and modify.  If it  is modified the web page will be updated according to the changes.
+        </p>
+        <p>
+            Take a look at the code given below(taken from the book <a href="https://eloquentjavascript.net/">eloquent javascript</a>):-
+        </p>
+        <p>
+           <pre> <code class="language-javascript">
+            &lt;!doctype html&gt;
+            &lt;html&gt;
+              &lt;head&gt;
+                &lt;title&gt;My home page&lt;/title&gt;
+              &lt;/head&gt;
+              &lt;body&gt;
+                &lt;h1&gt;My home page&lt;/h1&gt;
+                &lt;p&gt;Hello, I am Marijn and this is my home page.&lt;/p&gt;
+                &lt;p&gt;I also wrote a book! Read it
+                  &lt;a href=&quot;http://eloquentjavascript.net&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+              &lt;/body&gt;
+            &lt;/html&gt;
+           </code>
+           </pre>
+        </p>
+        <p>
+            The page created by the above code will be strucuted like this :-
+        </p>
+        <img class="hero-img" src="images/html-boxes.svg" alt="">
+        <p>
+            Every Document is represented as a box, and for each box there is an object to which we can interact and find out the things like, which HTML tag ? or what is  the content in the tag etc.
+        </p>
+        <p>
+            <strong>
+                This representation is called the Document Obect Model.
+            </strong>
+        </p>
+        <p>
+            Now let's come back to the topic of the blog <strong>Document Object Model (DOM) Functions.</strong>
+        </p>
+        <p>
+            DOM functions are used to do many kind of work such as:- 
+            <strong>
+                <ol>
+                    <li>
+                        Selecting and Creating Reference of an element/tag.
+                    </li>
+                    <li>
+                        Creating an element
+                    </li>
+                    <li>
+                        Modifying the content of the element/tag
+                    </li>
+                    <li>
+                        Getting the value of a particular element/tag
+                    </li>
+                </ol>
+            </strong>
+            and much more...
+        </p>
+        <p>
+            I will covering some important function from above listed categories
+        </p>
+        <h3>
+            <strong style="text-decoration: underline;">1.Selecting and Creating Reference of an element/tag.</strong>
+        </h3>
+        <p>
+            As the name says these functions are used to create a Referenceof a html tag on which you can add <a style="text-decoration: none; color: rgb(0, 38, 255);"href="https://developer.mozilla.org/en-US/docs/Web/API/EventListener">event listener</a> and perform the task as required. Let's start with the functions now:- 
+        <p>
+            <strong style="text-decoration: underline;">
+             (i) getElementByTagName();
+           </strong>
+        </p>
+         <p>
+            This function is used to select HTML element or create  Reference of a HTML element by help of HTML tags.
+            It search <strong>all elements</strong> with the given tag name.
+            It gives an array like object called <a style="text-decoration: none; color: rgb(0, 38, 255);" href="https://developer.mozilla.org/en-US/docs/Web/API/NodeList">Nodelist</a>, through which we can access the tags and perform the desirable tasks.
+        </p>
+        <p>
+            look at the example given below:-
+        </p>
+        <pre><code class="language-javascript">
+            var myParagraphs = document.getElementsByTagName(“p”);
+        </code></pre>
+        <p>
+            the above line will select all the "&lt;p&gt;" tags from the HTML document and return a Nodelist to the variable "myParagraphs".
+            To access it look at the code snippet given below:-
+        </p>
+        <pre><code class="language-javascript">
+            var myParagraphs = document.getElementsByTagName(“p”);
+            for (i = 0; i &lt; myParagraphs.length; i++) {
+                if (myParagraphs[i].className == “std_class”) {
+                    myParagraphs[i].onclick = function() {
+                        this.style.backgroundColor = “#f00”;
+                    }
+                }
+            }
+        </code></pre>
+        <p>
+            Here after the selection is done we used a for loop to use all the paragraph tags remember I told this earlier getElementByTagName(“p”) gives a array like object(NodeList). This program is doing a simpple task, it is searching for the paragraphs with a class attribute having value "std_class" when it is found a click event is being added and the backgroundColor is changed to red. so here <strong>click is the event</strong> and <strong>background color is the trigger</strong>.
+        </p>
+        <p>
+            There is another selector <strong>getElementByClassName()</strong> it works same as getElementByTagName() the only difference is the selection of element is done by <strong>class attribute</strong>.
+        </p>
+        <p>
+            <strong style="text-decoration: underline;">
+             (ii) getElementById();
+           </strong>
+        </p>
+         <p>
+            This function is used to select HTML element or create  Reference of a HTML element by <strong>Id</strong> attribute.
+            It search <strong>single element</strong> with the provided unique id as an argument,
+            through which we can access the tags and perform the desirable tasks.
+        </p>
+        <p>
+            look at the example given below:-
+        </p>
+        <pre><code class="language-javascript">
+            myId = document.getElementByID(“roll-no”);
+        </code></pre>
+        <p>
+            the above line will select the element with Id <strong>roll-no</strong>
+            To access it look at the code snippet given below:-
+        </p>
+        <pre><code class="language-javascript">
+            var myId = document.getElementById(“roll-no”);
+            myId.style.display = “block”;
+            myId.style.backgroundColor = “#f00”;
+            myId.style.border = “solid 1 px #00f”;
+        </code></pre>
+        <p>
+           First we select the elements with ID <strong>roll-no</strong> then changes the display style, added background Color and added border of the element.
+        </p>
+        <p>
+            <strong style="text-decoration: underline;">
+             (iii) querySelector() and querySelectorAll()
+           </strong>
+        </p>
+         <p>
+            These functions are the <strong>combinations of getElementById() , getElementByTagName() and getElementByClassName()</strong>.
+        </p>
+        <p>
+            With these function we can select HTML elements with help of class , id or tags which ever you want. 
+        </p>
+        <p>
+            look at the example given below:-
+        </p>
+        <pre><code class="language-javascript">
+            //selecttion using querySelector()
+           var myId = document.querySelector(“#roll-no”); //selecting element with id roll-no
+           var myClass = document.querySelector(".sixth");  //selecting first element with class sixth
+           var myTag = document.querySelector("a");  //selecting the first anchor tag
+
+            //selection using querySelectorAll()
+            var allClasses = document.querySelectorAll(".abc");  //selecting all element with class abc
+            var allTags = document.querySelectorAll("p");  //selecting all paragraph element
+        </code></pre>
+        <p>
+            I hope you have noticed some difference in the above code snippet.
+            If yes your observation skill is very good but if you haven't no problem, I will tell you, notice there is no Id selection in querySelectorAll() and also see the comments which has benn provided.
+        </p>
+        <p>
+            The reason there is no id selection for querySelectorAll(), the reason for this is querySelectorAll() <strong>selects all the element of given class/tag</strong> which means if a file has 3 element with same class , all three elements will be selected and same goes with selection of tag, if someone give "p" as a argument to querySelectorAll() it will select and create reference for p tags, and <strong>querySelectorAll() also returns a NodeList</strong>.
+        </p>
+        <p>
+            In contrast <strong>querySelector() selects only the first element it encounters</strong>,and select and create reference for that particular element.
+        </p>
+        <p>
+            <strong style="text-decoration: underline;">
+                (iv) Node
+              </strong>
+        </p>
+        <p>
+            Any element on a page including text and white space of a DOM structure is known as Node.
+        </p>
+        <p>
+            Available Nodes in DOM are:- 
+            <ol>
+                <li>node.childNodes</li>
+                <li>node.firstChild</li>
+                <li>node.lastChild</li>
+                <li>node.parentNode</li>
+                <li>node.nextSibling</li>
+                <li>node.previousSibling</li>
+            </ol>
+        </p>
+        <img class="hero-img" src="images/html-links.svg" alt="">
+        <p>This is a pictorial representation of relationship between the nodes</p>
+        <p>I will write another blog about nodes very soon</p>
+        </p>
+
+        <h3>
+            <strong style="text-decoration: underline;">2.Creating an element( createElement() )</strong>
+        </h3>
+        <p>
+            As the name says this DOM function is used to create a new HTML element.
+            while I was writing this section of blog I realized we can greate HTML in javascript and that is really cool thing, OK let's get back to the topic.
+
+            <p>
+                Consider the code snippet given below:- 
+            </p>
+            <pre><code class="language-javascript">
+                var myNewListItem = document.createElement(“li”)//creates a list element
+                var myNewPara = document.createElement(“p”);//creates a paragraph element
+            </code></pre>
+            <p>
+                The new element (here li and p) will be created and added to the DOM.
+            </p>
+            <p>
+                These are useful when you want a particular element to get added added to the DOM as soon as some task is finished or a evet is trigerred, for example add a paragrph as soon as a button is clicked.
+            </p>
+            <p>
+                But creating an element will not decide where in the DOM it will be added, you wanna add it at the end or add it between two elements.
+                This thing will be take care by Node (remember the last topic if not scroll a bit up and you will get that) and then appending it.
+            </p>
+        </p>
+
+        <h3>
+            <strong style="text-decoration: underline;">3.Modifying The DOM</strong>
+        </h3>
+
+        <p>
+            <p>
+                Everything about the DOM data structure can be changed.
+            </p>
+            <p>
+                For adding a child node to an parent element node, we can use:-
+            </p>
+            <p>
+                <strong style="text-decoration: underline;">
+                 (i) appendChild();
+               </strong>
+            </p>
+            <p>
+                It puts the node at the end.
+            </p>
+            <p>
+                <strong style="text-decoration: underline;">
+                 (i) insertBefore();
+               </strong>
+            </p>
+            <p>
+                This function takes two arguments.
+            </p>
+            <p>
+                It inserts the node given as first argumnent before the node given as second argument.
+            </p>
+            <p>
+                Take a look at the code snippet below
+            </p>
+            <pre>
+                <code class="language-javascript">
+                    &lt;p&gt;One&lt;/p&gt;
+                    &lt;p&gt;Two&lt;/p&gt;
+                    &lt;p&gt;Three&lt;/p&gt;
+
+                    &lt;script&gt;
+                    let paragraphs = document.getElementsByTagName(&quot;p&quot;);
+                    document.body.insertBefore(paragraphs[2], paragraphs[0]);
+                    &lt;/script&gt;
+                </code>
+            </pre>
+            <p>
+                <strong style="text-decoration: underline;">
+                 (iii) replaceChild();
+               </strong>
+            </p>
+            <p>
+                This function also takes two arguments.
+            </p>
+            <p>
+                It replaces a child node with a new one. The <strong>first argument will be the new node and second one will be the node which will be replaced.</strong>
+            </p>
+            <p>
+                The replaced node must be the child node of the element on which the method is called.
+            </p>
+            <p>
+                Have a look at the code snippet below:-
+            </p>
+            <pre>
+                <code class="language-javascript">
+                // Create a new text node called "Water"
+                 var textnode = document.createTextNode("Water");
+
+                // Get the first child node of an &lt;ul&gt; element
+                var item = document.getElementById("myList").childNodes[0];
+
+                // Replace the first child node of &lt;ul&gt; with the newly created text node
+                item.replaceChild(textnode, item.childNodes[0]);
+
+                // Note: This example replaces only the Text node "Coffee" with a Text node "Water"
+                
+                //output
+                //before replacing
+                <ul>
+                    <li>Coffee</li>
+                    <li>Tea</li>
+                    <li>Milk</li>
+                </ul>
+                //after replacing
+                  <ul>
+                    <li>Water</li>
+                    <li>Tea</li>
+                    <li>Milk</li>
+                  </ul>
+                </code>
+            </pre>
+            <p>
+                createTextNode() function creates a new text Node that we can insert into document and  make it show up on the screen.
+            </p>
+            <p>It's a kind of alternative for createElement();</p>
+            <p>
+                <strong style="text-decoration: underline;">
+                 (iv) getAttribute(); / setAtrribute();
+               </strong>
+            </p>
+            <p>
+                <strong>getAttribute()</strong>; function gives the access to the value of any attribute of any element on the page.
+            </p>
+            <p>
+                the argument of the function contains the name of the attribute.
+            </p>
+            <p>
+                have a look at the given code snippet:- 
+            </p>
+            <pre>
+                <code class="language-javascript">
+                    &lt;div id=&quot;div1&quot;&gt;Hi Champ!&lt;/div&gt;
+                    // in a console
+                    const div1 = document.getElementById('div1');
+                    //=&gt; &lt;div id=&quot;div1&quot;&gt;Hi Champ!&lt;/div&gt;
+                    const exampleAttr= div1.getAttribute('id');
+                    //=&gt; &quot;div1&quot;
+                    const align = div1.getAttribute('align')
+                    //=&gt; null
+                </code> 
+            </pre>
+                <p>
+                    <strong>setAttribute()</strong>; function is used tp replace the value of an atrribute.
+                </p>
+                <p>
+                  In other words, assigning new value to an existing atrribute is done by setAtrribute();
+                </p>
+                <p>
+                    It takes two arguments, first argument is thr atrribute and the 
+                    second attributte is the new value you want to give.
+                </p>
+                <p>
+                    setAtrribute(); can be used in a toggler wich switches to dark mode. We can create a class in CSS and can set the value of class attribute of as soon as the toggler is clicked. This example I got when I was writing this blog.
+                </p>
+        </p>
+        <h3>
+            <strong style="text-decoration: underline;">4.Getting the value of HTML element</strong>
+        </h3>
+        <p>
+            These functions are used to access the value of the tag which we can use to display it on user interface.
+        </p>
+        <p>
+            <strong style="text-decoration: underline;">
+             (i) innerText
+           </strong>
+        </p>
+        <p>
+            innerText function is used to access the text of any HTML element, Which we can use to display on the UI.
+        </p>   
+        <p>
+            innerText can also be used to change text of element or adding the text to a element.
+        </p>
+        <p>
+            Look at the code snippet given below:- 
+        </p>
+        <pre>
+            <code class="language-javascript">
+            &lt;div&gt; class = 'text'&gt; Hello!  &lt;/div&gt;
+               
+            var text = document.querySelector('.text');
+            console.log(text.innerText); //=&gt; Hello! content in the div
+            text.innerText = 'hi';// changing  the text
+            console.log(text.innerText); // =&gt; hi text changed
+            </code>
+        </pre>
+        <p>
+            <strong style="text-decoration: underline;">
+             (ii) innerHTML
+           </strong>
+        </p>
+        <p>
+            The innerHTML property can be used to write the dynamic html on the html document.
+        </p>
+        <p>
+            innerHTML is a property of every element. It tells you what is between the starting and ending tags of the element, and it also let you sets the content of the element.
+        </p>
+        <p>
+            look at the code snippet below for a better understanding.
+        </p>
+        <pre>
+            <code class="language-javascript">
+            &lt;p id=&quot;myParagraph&quot;&gt;
+            This is my paragraph.
+            &lt;/p&gt;
+            document.getElementById(&quot;myParagraph&quot;).innerHTML = &quot;This is my paragraph&quot;;
+            </code>
+        </pre>
+        <p>
+            <strong style="text-decoration: underline;">
+             (iii) value
+           </strong>
+        </p>
+        <p>
+            The value property sets or returns the value of the value attribute of a text field.
+            The value property contains the default value OR the value a user types in (or a value set by a script).
+        </p>
+        <p>
+            It is basically used to get the value of from the input field and then manipulated and displayed on User interface.
+        </p>
+        <p>
+            have a look at code snippet given below:-
+        </p>
+        <pre>
+            <code class="language-javascript">
+            &lt;!DOCTYPE html&gt;
+            &lt;html&gt;
+            &lt;body&gt;
+                
+            Name: &lt;input type=&quot;text&quot; id=&quot;myText&quot; value=&quot;Rishabh&quot;&gt;
+                
+            &lt;p&gt;Click the button to change the value of the text field.&lt;/p&gt;
+                
+            &lt;button onclick=&quot;myFunction()&quot;&gt;Try it&lt;/button&gt;
+                
+            &lt;script&gt;
+            function myFunction() {
+                 document.getElementById(&quot;myText&quot;).value = &quot;Kunwar&quot;;
+            }
+            &lt;/script&gt;
+                
+            &lt;/body&gt;
+            &lt;/html&gt;
+            </code>
+        </pre>
+        <p>
+            here as soon as the button is clicked the value of the input tag is changed from <strong>Rishabh</strong> to <strong>Kunwar</strong>.
+        </p>
+        <p style="padding-top: 1rem;">
+        With this I came to end of this blog please share your views, you can connect to me through 
+        <a style="text-decoration: none; color: rgb(0, 38, 255); font-weight: bold;" href="https://www.linkedin.com/in/rishabh-kunwar-782016195/">LinkedIn</a>
+        </p>
+        <p>
+            Thank you for reading this blog.
+        </p>
+    </div>
+    <footer class="footer margin-md">
+        <div class="footer-heading">Let's Socialize</div>
+        <ul class="non-bullet">
+            <li class="list-inline">
+                <a class="link" href="https://www.linkedin.com/in/rishabh-kunwar-782016195/">LinkedIn</a>
+            </li>
+            <li class="list-inline">
+                 <a class="link" href="https://twitter.com/RishabhKunwar11">Twitter</a>
+            </li>
+            <li class="list-inline">
+               <a class="link" href="https://github.com/kunwar-11">Github</a>
+            </li>
+            <li class="list-inline">
+                <a class="link" href="https://www.instagram.com/11rish09/">Instagram</a>
+             </li>
+        </ul>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.0/prism.min.js"></script>
+</body>
+</html>
