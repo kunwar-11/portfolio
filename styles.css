@@ -81,6 +81,7 @@ hr {
 
 .nav-pills {
     text-align: right;
+    padding-inline-start : 0px;
 }
 
 .navigation .active {
@@ -161,13 +162,9 @@ hr {
     .footer .link {
         padding: 0.1rem;
     }
+    .list-inline {
+        padding: 0;
+    }
+    
 }
 
-@media only screen and (max-width: 361px ) {
-    .nav-pills {
-        padding-left: 0px;
-    }
-    .footer .link {
-        padding: 0rem;
-    }
-}
